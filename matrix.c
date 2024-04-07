@@ -83,7 +83,7 @@ void free_matrix(int **matrix, int rows) {
 }
 
 int main() {
-    printf("[----- [박조현] [2021053017] -----]");
+    printf("[----- [박조현] [2021053017] -----]\n");
     int rowsA, colsA, rowsB, colsB;
     
     // 첫 번째 행렬의 행과 열의 개수 입력
