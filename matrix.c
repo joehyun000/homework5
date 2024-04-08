@@ -34,7 +34,7 @@ void print_matrix(int **matrix, int rows, int cols) {
 
 // 두 행렬을 더하는 함수
 int** addition_matrix(int **A, int **B, int rows, int cols) {    
-    int **add_matrix = allocate_matrix(rows, cols);       // 결과 행렬에 메모리를 동적으로 할당
+    int **add_matrix = allocate_matrix(rows, cols);       // sum행렬에 메모리를 동적으로 할당
     for(int i=0; i<rows; i++)
         for(int j=0; j<cols; j++)
             add_matrix[i][j] = A[i][j] + B[i][j];         // A+B의 결과를 add_matrix 행렬에 저장
@@ -43,7 +43,7 @@ int** addition_matrix(int **A, int **B, int rows, int cols) {
 
 // 두 행렬을 빼는 함수
 int** subtraction_matrix(int **A, int **B, int rows, int cols) {
-    int **sub_matrix = allocate_matrix(rows, cols);       // 결과 행렬에 메모리를 동적으로 할당
+    int **sub_matrix = allocate_matrix(rows, cols);       // sub행렬에 메모리를 동적으로 할당
     for(int i=0; i<rows; i++)
         for(int j=0; j<cols; j++)
             sub_matrix[i][j] = A[i][j] - B[i][j];         // A-B의 결과를 sub_matrix 행렬에 저장
@@ -65,7 +65,7 @@ int** multiply_matrix(int **A, int **B, int rowsA, int colsA, int rowsB, int col
         printf("행렬 곱셈이 불가능합니다.\n");                 
         return NULL;
     }
-    int **multiple_matrix = allocate_matrix(rowsA, colsB);             // 결과 행렬에 메모리를 동적으로 할당
+    int **multiple_matrix = allocate_matrix(rowsA, colsB);             // 곱행렬에 메모리를 동적으로 할당
     for(int i=0; i<rowsA; i++)
         for(int j=0; j<colsB; j++) {
             multiple_matrix[i][j] = 0;
