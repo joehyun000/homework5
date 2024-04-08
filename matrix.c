@@ -62,7 +62,7 @@ int** transpose_matrix(int **A, int rows, int cols) {
 // 두 행렬을 곱하는 함수
 int** multiply_matrix(int **A, int **B, int rowsA, int colsA, int rowsB, int colsB) {
     if(colsA != rowsB) {                                      // 행렬 곱셈이 불가능한 경우 : colsA와 rowsB가 같지 않을 때
-        printf("행렬 곱셈이 불가능합니다.\n");                 
+        printf("행렬 곱셈이 불가능한 형태입니다..\n");                 
         return NULL;
     }
     int **multiple_matrix = allocate_matrix(rowsA, colsB);             // 곱행렬에 메모리를 동적으로 할당
