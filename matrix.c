@@ -34,29 +34,29 @@ void print_matrix(int **matrix, int rows, int cols) {
 
 // 두 행렬을 더하는 함수
 int** addition_matrix(int **A, int **B, int rows, int cols) {    
-    int **result = allocate_matrix(rows, cols);       // 결과 행렬에 메모리를 동적으로 할당
+    int **add_matrix = allocate_matrix(rows, cols);       // 결과 행렬에 메모리를 동적으로 할당
     for(int i=0; i<rows; i++)
         for(int j=0; j<cols; j++)
-            result[i][j] = A[i][j] + B[i][j];         // A+B의 결과를 result 행렬에 저장
-    return result;
+            add_matrix[i][j] = A[i][j] + B[i][j];         // A+B의 결과를 add_matrix 행렬에 저장
+    return add_matrix;
 }
 
 // 두 행렬을 빼는 함수
 int** subtraction_matrix(int **A, int **B, int rows, int cols) {
-    int **result = allocate_matrix(rows, cols);       // 결과 행렬에 메모리를 동적으로 할당
+    int **sub_matrix = allocate_matrix(rows, cols);       // 결과 행렬에 메모리를 동적으로 할당
     for(int i=0; i<rows; i++)
         for(int j=0; j<cols; j++)
-            result[i][j] = A[i][j] - B[i][j];         // A-B의 결과를 result 행렬에 저장
-    return result;
+            sub_matrix[i][j] = A[i][j] - B[i][j];         // A-B의 결과를 sub_matrix 행렬에 저장
+    return sub_matrix;
 }
 
 // 행렬을 전치하는 함수
 int** transpose_matrix(int **A, int rows, int cols) {
-    int **result = allocate_matrix(cols, rows);       // 전치 행렬에 메모리를 동적으로 할당
+    int **trans_matrix = allocate_matrix(cols, rows);       // 전치 행렬에 메모리를 동적으로 할당
     for(int i=0; i<rows; i++)
         for(int j=0; j<cols; j++)
-            result[j][i] = A[i][j];                   // 전치 행렬은 원래 행렬의 행과 열을 바꿔주는 것이므로, A[i][j] -> result[j][i]
-    return result;
+            trans_matrix[j][i] = A[i][j];                   // 전치 행렬은 원래 행렬의 행과 열을 바꿔주는 것이므로, A[i][j] ->trans_matrix[j][i]
+    return trans_matrix;
 }
 
 // 두 행렬을 곱하는 함수
@@ -65,14 +65,14 @@ int** multiply_matrix(int **A, int **B, int rowsA, int colsA, int rowsB, int col
         printf("행렬 곱셈이 불가능합니다.\n");                 
         return NULL;
     }
-    int **result = allocate_matrix(rowsA, colsB);             // 결과 행렬에 메모리를 동적으로 할당
+    int **multiple_matrix = allocate_matrix(rowsA, colsB);             // 결과 행렬에 메모리를 동적으로 할당
     for(int i=0; i<rowsA; i++)
         for(int j=0; j<colsB; j++) {
-            result[i][j] = 0;
+            multiple_matrix[i][j] = 0;
             for(int k=0; k<colsA; k++)
-                result[i][j] += A[i][k] * B[k][j];           // AXB의 결과를 result 행렬에 저장
+                multiple_matrix[i][j] += A[i][k] * B[k][j];           // AXB의 결과를 multiple_matrix 행렬에 저장
         }
-    return result;
+    return multiple_matrix;
 }
 
 // 행렬을 해제하는 함수
@@ -90,12 +90,13 @@ int main() {
     input_matrix(&rowsA, &colsA);
     // 두 번째 행렬의 행과 열의 개수 입력
     input_matrix(&rowsB, &colsB);
-    
+
+    printf("\n");
     // 행렬의 메모리를 동적으로 할당
     int **matrixA = allocate_matrix(rowsA, colsA);
     int **matrixB = allocate_matrix(rowsB, colsB);
     
-    // 두 행렬의 값을 랜덤으로 채우기
+    // 두 행렬의 값을 랜덤으로 생성하여 채우기
     srand(time(0));         // 랜덤 시드 설정 : 실행할 때마다 다른 랜덤 값이 나오도록 함
     fill_matrix(matrixA, rowsA, colsA);
     fill_matrix(matrixB, rowsB, colsB);
